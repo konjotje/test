@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schuldhulpje</title>
+  <meta name="theme-color" content="#eef2f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1d3566" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet">
+  <style>
+    :root {
+      --text-shadow-light: 0px 1px 1px rgba(0,0,0,0.08);
+      --text-shadow-dark: 0px 1px 1px rgba(255,255,255,0.04);
+    }
+    body {
+      font-family: 'Space Grotesk', sans-serif; /* Default font */
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      text-shadow: var(--text-shadow-light);
+      background-color: #eef2f9;
+      background-image: url('/images/achtergrondje.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .dark body {
+      text-shadow: var(--text-shadow-dark);
+      background-color: #2c3038;
+      background-image: url('/images/achtergronddonker.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Custom scrollbar for a cleaner look */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.2);
+    }
+    
+    .material-symbols-rounded {
+      vertical-align: middle;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400, /* Default weight, can be overridden */
+        'GRAD' 0,
+        'opsz' 20; /* Default optical size, adjust with font-size */
+       line-height: 1; 
+       letter-spacing: normal;
+       text-transform: none;
+       display: inline-flex; /* Changed to inline-flex for better centering of p-1 */
+       align-items: center;
+       justify-content: center;
+       white-space: nowrap;
+       word-wrap: normal;
+       direction: ltr;
+       -webkit-font-feature-settings: 'liga';
+       -webkit-font-smoothing: antialiased;
+    }
+
+    .markdown-content {
+      overflow-wrap: break-word;
+      word-wrap: break-word; /* Legacy support */
+    }
+
+    /* Markdown styling - Font sizes are now consistent */
+    .markdown-content strong, .markdown-content b { font-weight: 500; } /* Medium for emphasis */
+    .markdown-content h1 { font-size: 1em; margin-bottom: 0.4em; font-weight: 700; } /* Bold, consistent size */
+    .markdown-content h2 { font-size: 1em; margin-bottom: 0.3em; font-weight: 700; } /* Bold, consistent size */
+    .markdown-content h3 { font-size: 1em; margin-bottom: 0.2em; font-weight: 500; } /* Medium, consistent size */
+    .markdown-content ul { list-style-type: disc; margin-left: 1.5em; margin-bottom: 0.5em; }
+    .markdown-content ol { list-style-type: decimal; margin-left: 1.5em; margin-bottom: 0.5em; }
+    .markdown-content li { margin-bottom: 0.2em; font-weight: 300; } /* Light for list items */
+    .markdown-content p { margin-bottom: 0.5em; line-height: 1.6; font-weight: 300; } /* Light for paragraphs */
+    .markdown-content blockquote {
+      border-left: 4px solid #141ff5; /* brand-accent */
+      padding-left: 1em;
+      margin-left: 0;
+      font-style: italic;
+      color: #6b7280; /* light-text-secondary */
+      font-weight: 300;
+    }
+    .dark .markdown-content blockquote {
+      color: #9ca3af; /* dark-text-secondary */
+    }
+
+    /* Static Glow Effects */
+    .static-glow-red {
+      box-shadow: 0 0 12px rgba(240, 122, 122, 0.8);
+    }
+    .dark .static-glow-red {
+      box-shadow: 0 0 12px rgba(232, 106, 106, 0.8);
+    }
+    .static-glow-blue {
+      box-shadow: 0 0 12px rgba(20, 31, 245, 0.6);
+    }
+    .dark .static-glow-blue {
+       box-shadow: 0 0 12px rgba(20, 31, 245, 0.6);
+    }
+
+    /* Red Glow Animation for Overdue Items */
+    @keyframes glowing-pulse-red {
+      0% { box-shadow: 0 0 8px rgba(240, 122, 122, 0.4); }
+      50% { box-shadow: 0 0 20px rgba(240, 122, 122, 0.9); }
+      100% { box-shadow: 0 0 8px rgba(240, 122, 122, 0.4); }
+    }
+    .animate-glowing-pulse-red {
+      animation: glowing-pulse-red 2s infinite ease-in-out;
+    }
+
+    /* Thinking Animation Dots */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    .animate-pulse-dot-1 { animation: pulse-dot 1.2s infinite; animation-delay: 0s; }
+    .animate-pulse-dot-2 { animation: pulse-dot 1.2s infinite; animation-delay: 0.15s; }
+    .animate-pulse-dot-3 { animation: pulse-dot 1.2s infinite; animation-delay: 0.3s; }
+
+    /* Mic Glow Animation */
+    @keyframes glowing-pulse {
+      0% { box-shadow: 0 0 4px rgba(20, 31, 245, 0.3); }
+      50% { box-shadow: 0 0 16px rgba(20, 31, 245, 0.7); }
+      100% { box-shadow: 0 0 4px rgba(20, 31, 245, 0.3); }
+    }
+    .animate-glowing-pulse {
+      animation: glowing-pulse 1.5s infinite ease-in-out;
+    }
+
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', 
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif'], // Titles and headings also use Space Grotesk
+          },
+          colors: {
+            // Light Theme Neumorphic Palette (Base retained)
+            'light-bg': '#eef2f9',
+            'light-surface': '#eef2f9',
+            'light-shadow-dark': '#d1d9e6',
+            'light-shadow-light': '#ffffff',
+            'light-text-primary': '#374151', 
+            'light-text-secondary': '#6b7280',
+            'light-danger': '#F07A7A',
+            'light-success': '#72D6A0',
+            'light-welcome-bg': '#DDE8FF',
+
+            // Dark Theme Neumorphic Palette (Base retained)
+            'dark-bg': '#1d3566',
+            'dark-surface': '#1d3566',
+            'dark-shadow-dark': '#23272f',
+            'dark-shadow-light': '#353a46',
+            'dark-text-primary': '#e5e7eb',
+            'dark-text-secondary': '#9ca3af',
+            'dark-danger': '#E86A6A',
+            'dark-success': '#5DC98D',
+            'dark-welcome-bg': '#3A4A72',
+
+            // New Brand Accent Color
+            'brand-accent': '#141ff5',
+            'light-accent': '#141ff5', // Updated to new brand accent
+            'light-accent-hover': '#0f1ae6', // Slightly darker for hover
+            'dark-accent': '#141ff5', // Same accent for dark mode
+            'dark-accent-hover': '#2839f6', // Slightly lighter/brighter for dark mode hover
+
+            // Pastel colors for charts (can be kept or updated if needed for secondary chart elements)
+            'pastel-blue': '#A7C7E7',
+            'pastel-green': '#A2D9CE',
+            'pastel-pink': '#F3CFC6',
+            'pastel-purple': '#D7BDE2',
+          },
+          boxShadow: {
+            // Neumorphic shadows retained, hover effect will use flat variants
+            'neumorphic-convex-light': '5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff',
+            'neumorphic-concave-light': 'inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff',
+            'neumorphic-pressed-light': 'inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff',
+            'neumorphic-flat-light': '2px 2px 4px #d1d9e6, -2px -2px 4px #ffffff',
+
+            'neumorphic-convex-dark': '5px 5px 10px #23272f, -5px -5px 10px #353a46',
+            'neumorphic-concave-dark': 'inset 5px 5px 10px #23272f, inset -5px -5px 10px #353a46',
+            'neumorphic-pressed-dark': 'inset 3px 3px 6px #23272f, inset -3px -3px 6px #353a46',
+            'neumorphic-flat-dark': '2px 2px 4px #23272f, -2px -2px 4px #353a46',
+          },
+          borderRadius: {
+            'xl': '1rem',
+            '2xl': '1.5rem',
+            'neumorphic': '12px',
+            'neumorphic-lg': '20px',
+          },
+          fontWeight: { // Explicitly define weights for Space Grotesk
+            light: '300',
+            normal: '300', // Default to light for body
+            medium: '500',
+            bold: '700',
+          }
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@6",
+    "recharts": "https://esm.sh/recharts@2",
+    "@google/genai": "https://esm.sh/@google/genai@0.14.0",
+    "marked": "https://esm.sh/marked@13.0.2",
+    "@/": "/",
+    "firebase/app": "https://esm.sh/firebase@11.10.0/app",
+    "firebase/auth": "https://esm.sh/firebase@11.10.0/auth",
+    "firebase/firestore": "https://esm.sh/firebase@11.10.0/firestore",
+    "react-dom": "https://esm.sh/react-dom@^19.1.0",
+    "firebase/": "https://esm.sh/firebase@^12.0.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="font-sans font-light text-light-text-primary dark:text-dark-text-primary transition-colors duration-300 overflow-x-hidden">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "municipality": {
+    "name": "Gemeente Delft",
+    "description": "De gemeente Delft biedt diverse vormen van ondersteuning aan inwoners met financiële vragen of problemen.",
+    "info": "De gemeente Delft biedt diverse vormen van ondersteuning op het gebied van financiën en schulden. Hieronder vindt u een overzicht van organisaties die u hierbij kunnen helpen.",
+    "contact": {
+      "phone": "14015",
+      "website": "https://www.delft.nl/",
+      "address": "Stadhuis, Stationsplein 1, 2611 BV Delft"
+    }
+  },
+  "organizations": [
+    {
+      "name": "De Financiële Winkel",
+      "description": "De Financiële Winkel biedt hulp bij geldzorgen en schulden.",
+      "location": "Delft",
+      "contact": {
+        "phone": "015 - 260 33 00",
+        "email": "info@financielewinkel.nl",
+        "website": "https://www.financielewinkel.nl/"
+      }, 
+      "address": "Vesteplein 100, 2611 BW Delft",
+      "logo": "/images/financielewinkel-logo.webp"
+    },
+    {
+      "name": "Geldzaken voor Elkaar",
+      "description": "Geldzaken voor Elkaar staat voor je klaar bij vragen over geld en administratie.",
+      "location": "Delft",
+      "contact": {
+        "phone": "015 - 212 77 77",
+        "email": "info@geldzakenvoorelkaar.nl",
+        "website": "https://www.geldzakenvoorelkaar.nl/"
+      },
+      "address": "Diverse locaties in Delft, zie website",
+      "logo": "/images/geldzakenvoorelkaar-logo.webp"
+    },
+    {
+      "name": "Het Regionaal Energieloket",
+      "description": "Het Regionaal Energieloket geeft je advies over energie besparen.",
+      "location": "Regionaal Energieloket | Gemeente Delft",
+      "contact": {
+        "phone": "085 - 401 68 24",
+        "email": "info@regionaalenergieloket.nl",
+        "website": "https://www.regionaalenergieloket.nl/"
+      },
+      "address": "Online en telefonisch bereikbaar",
+      "logo": "/images/regionaalenergieloket-logo.webp"
+    },
+    {
+      "name": "Energiecoach Delft",
+      "description": "Besparen op je energiekosten? De energiecoach helpt je verder!",
+      "location": "Duurzaam | Gemeente Delft",
+      "contact": {
+        "phone": "015 - 260 33 00",
+        "email": "energiecoach@delft.nl",
+        "website": "https://www.delft.nl/energiecoach"
+      },
+      "address": "Online en telefonisch bereikbaar",
+      "logo": "/images/energiecoach-logo.webp"
+    }
+  ]
+}

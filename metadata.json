@@ -1,5 +1,9 @@
 {
-  "name": "Copy of Empty",
-  "description": "An empty app",
-  "requestFramePermissions": []
+  "name": "Copy of Schuldhulpje",
+  "description": "Schuldhulpje: Jouw Digitale Redder in de Financiële Storm.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "prompt": ""
 }

@@ -1,17 +1,24 @@
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+/// <reference types="vite/client" />
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
-      }
-    };
-});
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './'),
+    },
+  },
+  server: {
+    // Prevent Vite from watching generated output folders which can trigger
+    // unnecessary HMR/full page reloads when e.g. a build or script writes files there.
+    watch: {
+      ignored: ['**/dist/**', '**/build/**', '**/.cache/**', '**/.git/**'],
+    },
+  },
+  define: {
+    // Add environment variable definitions if needed
+  },
+})
